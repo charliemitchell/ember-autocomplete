@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ember Auto Complete Example</title>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'> -->
+    <link rel="stylesheet" type="text/css" href="autocomplete/autocomplete.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.2/lumen/bootstrap.min.css">
+    <script src="vendor/jquery-2.0.3.min.js"></script>
+    <script src="vendor/handlebars-v1.3.0.js"></script>
+    <script src="vendor/ember.1.7.1.js"></script>
+    <script src="app.js"></script>
+    <script src="configurations.js"></script>
+    
+    <script src="autocomplete/ember-autocomplete.js"></script>
+</head>
+<body>
+    <!-- The Component Template -->
+    <script id="components/auto-complete" type="text/x-handlebars">
+        {{input value=value placeholder=placeholder id=inputid class=inputclass}}
+        {{#if active}}
+            <div {{bind-attr class=":ac-component :results resultsclass"}}>
+                {{#if results}}
+                    {{#if prefix}}<div>{{{prefix}}}</div>{{/if}}
+                
+                    <ul style="list-style:none" class="ac-ul">
+                        {{#each results}}
+                            <li {{action 'select' this}} style="padding:5px;" class="ac-li">{{{autocomplete}}}</li>
+                        {{/each}}
+                    </ul>
+                {{else}}
+                <div><i class="fi-prohibited"></i> <i>No Results...</i></div>
+                {{/if}}
+            </div>
+        {{/if}} 
+    </script>
+
+
+
+    <script type="text/x-handlebars" id="index">
+        <div class="panel panel-default">
+          <div class="panel-heading">Current Selection</div>
+          <div class="panel-body">
+            {{currentSelection}}
+          </div>
+        </div>
+
+        <div class="well">
+            <h4>Simple Autocomplete using static data </h4>
+            {{auto-complete config=Ac.config.example_static scope=controller }} <br/>
+        </div>
+
+        <div class="well">
+            <h4>Simple Autocomplete using static data, synced with currentSelection </h4>
+            {{auto-complete config=Ac.config.example_static scope=controller value=currentSelection }} <br/>
+        </div>
+
+        <div class="well">
+            <h4>More Advanced Autocomplete using static data </h4>
+            {{auto-complete config=Ac.config.more_advanced_static scope=controller}} <br/>
+        </div>
+
+        <div class="well">
+            <h4>The Basic Auto Complete Using an Endpoint </h4>
+            {{auto-complete config=Ac.config.chooseCompany scope=controller}} <br/>
+        </div>
+
+        <div class="well">
+            <h4>More Advanced Using an Endpoint </h4>
+            {{auto-complete config=Ac.config.getLocations scope=controller}} <br/>
+        </div>
+        
+    </script>
+    
+
+</body>
+</html>

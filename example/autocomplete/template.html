@@ -1,0 +1,34 @@
+<!--
+        Author: Charlie Mitchell
+        Contact: charlie@webapp.technology
+        Title: Ember Autocomplete Component
+        Version: 0.1
+        Deps: Ember
+        Licensed under the MIT license.
+
+        Notes: 
+            <i class="fi-prohibited"></i> is Part of Zurb Foundation Icons 3. 
+            Icon Represented in Unicode:  ⃠  [U+20E0;]    OR    &#x20E0; in HTML
+            [http://zurb.com/playground/foundation-icon-fonts-3] In the Miscellaneous Icons Section. 
+            Feel Free to Replace this What whatever Icon you see fit. 
+-->
+
+<script id="components/auto-complete" type="text/x-handlebars">
+    {{input value=value placeholder=placeholder id=inputid class=inputclass}}
+    {{#if active}}
+        <div {{bind-attr class=":ac-component :results resultsclass"}}>
+            {{#if results}}
+            
+                {{#if prefix}}<div>{{{prefix}}}</div>{{/if}}
+            
+                <ul style="list-style:none" class="ac-ul">
+                    {{#each results}}
+                        <li {{action 'select' this}} style="padding:5px;" class="ac-li">{{{autocomplete}}}</li>
+                    {{/each}}
+                </ul>
+            {{else}}
+            <div><i class="fi-prohibited"></i> <i>No Results...</i></div>
+            {{/if}}
+        </div>
+    {{/if}} 
+</script>
