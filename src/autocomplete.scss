@@ -1,0 +1,143 @@
+li#prefix {
+    color: #949494;
+    font-size: 14px/20px;
+    font-style: italic;
+}
+
+.autocompletelist {
+    &#prefix{
+        pointer-events: none;   
+    }
+    &:not(#prefix):hover {
+        background-color: #efefef;
+        cursor:pointer;
+    }
+    .line1 {
+        font-size:15px/20px;
+        margin-top:2px;
+    }
+    .line2 {
+        font-size:14px/20px;
+        padding: 3px 0 5px 10px;
+        margin-bottom:2px;
+    }
+    
+    a, a:hover {
+        color: #000;
+    }
+    
+   
+}
+
+.ui-autocomplete {
+    max-height:180px;
+    overflow-y: auto;
+}
+
+.ac-component {
+    &.results {
+        position:absolute;
+        max-height:400px;
+        overflow-y: auto;
+        background-color:white;
+        z-index:2;
+        padding:5px;
+        box-shadow:0 0 2px 1px rgba(0,0,0,0.4);
+        margin-top : -3px
+    }
+    
+    ul {
+        margin:0 0 3px 0;
+        
+        li {
+            
+            font-size: 16px/20px;
+            line-height: 1;
+            
+            .small-details {
+                font-size : 0.7rem;
+            }
+        }
+    }
+    
+    ul li:hover, ul li.hover{
+        background-color: #efefef;
+        cursor:pointer;
+    }
+    
+    //opacity : 0;
+    
+   
+    animation-fill-mode:forwards; /*when the W3C spec is finished*/
+    -webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/
+    -moz-animation-fill-mode:forwards; /*FF 5+*/
+    -o-animation-fill-mode:forwards; /*Not implemented in Opera Quite yet*/
+    -ms-animation-fill-mode:forwards; /*IE 10+*/
+
+    animation: autocomplete ease 0.4s;
+    -webkit-animation: autocomplete ease 0.4s;
+    -moz-animation: autocomplete ease 0.4s;
+    -o-animation: autocomplete ease 0.4s;
+    -ms-animation: autocomplete ease 0.4s;
+
+    animation-iteration-count: 1;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-iteration-count: 1;
+    -o-animation-iteration-count: 1;
+    -ms-animation-iteration-count: 1;
+}
+
+@keyframes autocomplete{
+    0% {
+        opacity:0;
+        margin-top : 100px;
+    }
+    100% {
+        opacity:1;
+        margin-top : -4px;
+    }
+}
+
+@-moz-keyframes autocomplete{
+    0% {
+        opacity:0;
+        margin-top : 100px;
+    }
+    100% {
+        opacity:1;
+        margin-top : -4px;
+    }
+}
+
+@-webkit-keyframes autocomplete {
+    0% {
+        opacity:0;
+        margin-top : 100px;
+    }
+    100% {
+        opacity:1;
+        margin-top : -4px;
+    }
+}
+
+@-o-keyframes autocomplete {
+    0% {
+        opacity:0;
+        margin-top : 100px;
+    }
+    100% {
+        opacity:1;
+        margin-top : -4px;
+    }
+}
+
+@-ms-keyframes autocomplete {
+    0% {
+        opacity:0;
+        margin-top : 100px;
+    }
+    100% {
+        opacity:1;
+        margin-top : -4px;
+    }
+}
